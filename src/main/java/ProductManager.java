@@ -25,6 +25,13 @@ public class ProductManager {
         return result;
     }
 
+    public void removeById(int id) {
+        repository.removeById(id);
+    }
+
+
+
+
    // private boolean matches(Product product, String search) {
    //     if (product.getName().contains(search)) {
     //        return true;

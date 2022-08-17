@@ -45,4 +45,37 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void findAll() {
+        manager.add(book1);
+        manager.add(book2);
+        repo.findAll();
+        Product[] expected = { book1, book2};
+        Product[] actual = repo.findAll();
+    }
+
+
+    @Test
+    public void removeById() {
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(book3);
+        manager.add(book4);
+
+        Assertions.assertThrows(NotFoundException.class,
+                () -> manager.removeById(10)
+                );
+    }
+
+    @Test
+    public void removeByIdSuccess() {
+        manager.add(book1);
+        manager.add(book2);
+        manager.removeById(2);
+        Product[] expected = { book1};
+        Product[] actual = repo.findAll();
+    }
+
+
+
 }
